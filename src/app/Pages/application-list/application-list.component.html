@@ -1,0 +1,103 @@
+<div class="container mt-4">
+    <h1 class="text-center" style="color:mediumorchid;">Applicant List</h1>
+</div>
+<div class="table-responsive mt-5 mx-5">
+    <table class="table table-striped table-hover table-dark table-  mx-auto">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Full Name</th>
+                <th>Contact No</th>
+                <th>City</th>
+                <th>Credit Score</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of ApplicationList; track $index) {
+                <tr>
+                    <td>{{$index+1}}</td>
+                    <td>
+                        <div class="div">
+                            @if (item.isedit) {
+                            <input type="text" [(ngModel)]="item.fullName">
+                            <div class="text-danger">
+                                @if (validatedtext(item.fullName)
+                                ) {
+                                <span>*Required</span>
+                                }
+                            </div>
+                            }
+                        </div>
+                        <div class="div">
+                            @if (!item.isedit) {
+                            {{item.fullName}}
+                            }
+                        </div>
+                    </td>
+                    <td>
+                        <div class="div">
+                            @if (item.isedit) {
+                            <input type="text" [(ngModel)]="item.phone">
+                            <div class="text-danger">
+                                @if (validatedtext(item.phone)
+                                ) {
+                                <span>*Required</span>
+                                }
+                            </div>
+                            }
+                        </div>
+                        <div class="div">
+                            @if (!item.isedit) {
+                            {{item.phone}}
+                            }
+                        </div>
+                    </td>
+                    <td>
+                        <div class="div">
+                            @if (item.isedit) {
+                            <input type="text" [(ngModel)]="item.city">
+                            <div class="text-danger">
+                                @if (validatedtext(item.city)
+                                ) {
+                                <span>*Required</span>
+                                }
+                            </div>
+                            }
+                        </div>
+                        <div class="div">
+                            @if (!item.isedit) {
+                            {{item.city}}
+                            }
+                        </div>
+                    </td>
+                    <td>
+                        <div class="div">
+                            @if (item.isedit) {
+                            <input type="text" [(ngModel)]="item.creditScore">
+                            <div class="text-danger">
+                                @if (validatedtext(item.creditScore)
+                                ) {
+                                <span>*Required</span>
+                                }
+                            </div>
+                            }
+                        </div>
+                        <div class="div">
+                            @if (!item.isedit) {
+                            {{item.creditScore}}
+                            }
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-success mx-3" (click)="onEdit(item)">Edit</button>
+                        <button class="btn btn-sm btn-danger" (click)="onDelete()">Delete</button>
+                    </td>
+                 </tr>
+            }
+            
+        </tbody>
+      </table>
+</div>
+     
+
